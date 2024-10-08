@@ -23,5 +23,8 @@ public class GlobalGameVars {
 
 	public static final Color brigthLightBlueColor = new Color(128, 255, 255);
 	
+	public static final int mainFrameWidth = 760;
+	public static final int mainFrameHeight = 520;
+	
 
 }

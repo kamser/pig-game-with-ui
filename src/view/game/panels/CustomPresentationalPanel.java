@@ -7,9 +7,9 @@ import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import common.CustomLabel;
+import common.CustomUIelement;
 
-public class CustomPanel extends JPanel implements PanelInterface{
+public class CustomPresentationalPanel extends JPanel implements PresentationalPanelInterface{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -17,10 +17,10 @@ public class CustomPanel extends JPanel implements PanelInterface{
 	private int yCoordenadePosition;
 	private int panelWidth;
 	private int panelHeigth;
-	List<CustomLabel> referenceLabelValues;
+	List<CustomUIelement> referenceLabelValues;
 	private Color backgroundColor;
 
-	public CustomPanel(int xCoordenadePosition, int yCoordenadePosition, int panelWidth, int panelHeigth, List<CustomLabel>referenceLabelValues, Color backgroundColor) {
+	public CustomPresentationalPanel(int xCoordenadePosition, int yCoordenadePosition, int panelWidth, int panelHeigth, List<CustomUIelement>referenceLabelValues, Color backgroundColor) {
 		super();
 		this.xCoordenadePosition = xCoordenadePosition;
 		this.yCoordenadePosition = yCoordenadePosition;
@@ -31,16 +31,16 @@ public class CustomPanel extends JPanel implements PanelInterface{
 	}
 
 	@Override
-	public JLabel createLabel(CustomLabel label) {
-		JLabel lblGameInformation = new JLabel(label.getUIText());
-		lblGameInformation.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		lblGameInformation.setBounds(label.getUICoordenadesAndDimentions());
-		return lblGameInformation;
+	public JLabel createLabel(CustomUIelement uiElementData) {
+		JLabel gameLabel = new JLabel(uiElementData.getUIText());
+		gameLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		gameLabel.setBounds(uiElementData.getUICoordenadesAndDimentions());
+		return gameLabel;
 	}
 
 	@Override
-	public void setLabelsOnPanel() {
-		for(CustomLabel label : referenceLabelValues) {
+	public void setUIelementsOnPanel() {
+		for(CustomUIelement label : referenceLabelValues) {
 			add(createLabel(label));
 		}
 	}
@@ -49,7 +49,7 @@ public class CustomPanel extends JPanel implements PanelInterface{
 	public void createPanel() {
 		setBackground(backgroundColor);
 		setBounds(xCoordenadePosition, yCoordenadePosition, panelWidth, panelHeigth);	
-		setLabelsOnPanel();
+		setUIelementsOnPanel();
 	}
 
 }

@@ -2,16 +2,24 @@ package common;
 
 import java.awt.Rectangle;
 
-public class CustomLabel {
+public class CustomUIelement {
 	private String UIText;
 	private Rectangle UICoordenadesAndDimentions;
+	private UIelementIdentifier uiElemID;
 	
 	
 	
-	public CustomLabel(String uIText, Rectangle uICoordenadesAndDimentions) {
+	public CustomUIelement(String uIText, Rectangle uICoordenadesAndDimentions, UIelementIdentifier uiElemID) {
 		super();
 		UIText = uIText;
 		UICoordenadesAndDimentions = uICoordenadesAndDimentions;
+		this.uiElemID = uiElemID;
+	}
+	public UIelementIdentifier getUiElemID() {
+		return uiElemID;
+	}
+	public void setUiElemID(UIelementIdentifier uiElemID) {
+		this.uiElemID = uiElemID;
 	}
 	public String getUIText() {
 		return UIText;
