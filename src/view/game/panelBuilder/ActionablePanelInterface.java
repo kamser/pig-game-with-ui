@@ -1,4 +1,4 @@
-package view.game.panels;
+package view.game.panelBuilder;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;

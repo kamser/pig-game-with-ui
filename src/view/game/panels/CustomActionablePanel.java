@@ -9,56 +9,39 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import common.CustomUIelement;
+import view.game.panelBuilder.ActionablePanelInterface;
+import view.game.strategyInterfaces.CreateButtonInt;
+import view.game.strategyInterfaces.CreateLabelInt;
 
-public class CustomActionablePanel extends JPanel implements ActionablePanelInterface{
+public class CustomActionablePanel extends BasePanel implements ActionablePanelInterface{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	private int xCoordenadePosition;
-	private int yCoordenadePosition;
-	private int panelWidth;
-	private int panelHeigth;
-	List<CustomUIelement> referenceLabelValues;
-	private Color backgroundColor;
+	CreateButtonInt customButton;
+	CreateLabelInt customLabel;
 
 	public CustomActionablePanel(int xCoordenadePosition, int yCoordenadePosition, int panelWidth, int panelHeigth, List<CustomUIelement>referenceLabelValues, Color backgroundColor) {
-		super();
-		this.xCoordenadePosition = xCoordenadePosition;
-		this.yCoordenadePosition = yCoordenadePosition;
-		this.panelWidth = panelWidth;
-		this.panelHeigth = panelHeigth;
-		this.referenceLabelValues = referenceLabelValues;
-		this.backgroundColor = backgroundColor;
+		super(xCoordenadePosition, yCoordenadePosition, panelWidth, panelHeigth, referenceLabelValues, backgroundColor);
 	}
 
 	@Override
 	public JLabel createLabel(CustomUIelement uiElementData) {
-		JLabel gameLabel = new JLabel(uiElementData.getUIText());
-		gameLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		gameLabel.setBounds(uiElementData.getUICoordenadesAndDimentions());
-		return gameLabel;
+		return customLabel.createLabel(uiElementData);
 	}
 	
 	@Override
 	public JButton createButton(CustomUIelement elementData) {
-		JButton actionButton = new JButton(elementData.getUIText());
-		actionButton.setBounds(elementData.getUICoordenadesAndDimentions());
-		return actionButton;
+		return customButton.createButton(elementData);
 	}
 
 
 	@Override
 	public void setUIelementsOnPanel() {
-		for(CustomUIelement uiElementMetadata : referenceLabelValues) {
+		for(CustomUIelement uiElementMetadata : getReferenceLabelValues()) {
 			switch(uiElementMetadata.getUiElemID()){
 				case BUTTON:
-					add(createButton(uiElementMetadata));
+					setComponent(createButton(uiElementMetadata));
 					break;
 				case LABEL:
-					add(createLabel(uiElementMetadata));
+					setComponent(createLabel(uiElementMetadata));
 					break;
 			}
 		}
@@ -66,9 +49,12 @@ public class CustomActionablePanel extends JPanel implements ActionablePanelInte
 
 	@Override
 	public void createPanel() {
-		setBackground(backgroundColor);
-		setBounds(xCoordenadePosition, yCoordenadePosition, panelWidth, panelHeigth);	
+		drawPanel();
 		setUIelementsOnPanel();
-		
+	}
+	
+	public void setUICustomization(CreateButtonInt selectedWayToCreateButton, CreateLabelInt selectedWayToCreateLabel) {
+		customButton = selectedWayToCreateButton;
+		customLabel = selectedWayToCreateLabel;
 	}
 }

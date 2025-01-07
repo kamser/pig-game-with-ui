@@ -4,6 +4,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import common.MainScreenReferenceValues;
+import view.game.panelBuilder.ActionablePanelBuilder;
+import view.game.panelBuilder.PresentationalPanelBuilder;
+import view.game.strategyConcrete.SimpleButton;
+import view.game.strategyConcrete.SimpleLabel;
 import common.GlobalGameVars;
 
 public class MainGameParentPanel extends JPanel{
@@ -13,7 +17,7 @@ public class MainGameParentPanel extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private final int playerCounter = 4;
+	private final int playerCounter = 2;
 	
 	public MainGameParentPanel() {
 		setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -37,9 +41,10 @@ public class MainGameParentPanel extends JPanel{
 											.setReferenceLabelValues(MainScreenReferenceValues.getPlayerInfoPanelLabelReferenceValues())
 											.setBackgroundColor(GlobalGameVars.brigthLightBlueColor)
 											.build();
+			playerPanelInfo.setUICustomization(new SimpleLabel());
 			playerPanelInfo.createPanel();
-			add(playerPanelInfo);
-			playerPanelInfo.setLayout(null);
+			add(playerPanelInfo.getPanel());
+			playerPanelInfo.getPanel().setLayout(null);
 			nextPanelXCoordenade = nextPanelXCoordenade + GlobalGameVars.secundaryPanelLeftPadding + GlobalGameVars.secundaryPanelWeigth;
 		}
 	}
@@ -54,9 +59,10 @@ public class MainGameParentPanel extends JPanel{
 												.setReferenceLabelValues(MainScreenReferenceValues.getCurrentPlayerInfoPanelLabelReferenceValues())
 												.setBackgroundColor(GlobalGameVars.brigthLightBlueColor)
 												.build();
+		currentPlayerInfoPanel.setUICustomization(new SimpleButton(), new SimpleLabel());
 		currentPlayerInfoPanel.createPanel();
-		add(currentPlayerInfoPanel);
-		currentPlayerInfoPanel.setLayout(null);
+		add(currentPlayerInfoPanel.getPanel());
+		currentPlayerInfoPanel.getPanel().setLayout(null);
 		
 	}
 	
@@ -71,9 +77,10 @@ public class MainGameParentPanel extends JPanel{
 												.setReferenceLabelValues(MainScreenReferenceValues.getCurrentShiftInfoPanelLabelReferenceValues())
 												.setBackgroundColor(GlobalGameVars.brigthOrangeColor)
 												.build();
+		currentShiftInfoPanel.setUICustomization(new SimpleLabel());
 		currentShiftInfoPanel.createPanel();
-		add(currentShiftInfoPanel);
-		currentShiftInfoPanel.setLayout(null);
+		add(currentShiftInfoPanel.getPanel());
+		currentShiftInfoPanel.getPanel().setLayout(null);
 		
 	}
 

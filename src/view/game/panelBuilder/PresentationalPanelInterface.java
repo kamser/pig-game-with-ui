@@ -1,4 +1,4 @@
-package view.game.panels;
+package view.game.panelBuilder;
 
 import java.awt.Rectangle;
 import java.util.List;

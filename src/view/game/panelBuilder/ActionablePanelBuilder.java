@@ -1,9 +1,10 @@
-package view.game.panels;
+package view.game.panelBuilder;
 
 import java.awt.Color;
 import java.util.List;
 
 import common.CustomUIelement;
+import view.game.panels.CustomActionablePanel;
 
 public class ActionablePanelBuilder implements ActionableBuilder{
 	private int xCoordenadePosition;
