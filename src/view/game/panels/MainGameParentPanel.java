@@ -3,9 +3,11 @@ package view.game.panels;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import behavior.game.MainGameActionListener;
 import common.MainScreenReferenceValues;
 import view.game.panelBuilder.ActionablePanelBuilder;
 import view.game.panelBuilder.PresentationalPanelBuilder;
+import view.game.strategyConcrete.SetUIelementsFrPresentationalPanels;
 import view.game.strategyConcrete.SimpleButton;
 import view.game.strategyConcrete.SimpleLabel;
 import common.GlobalGameVars;
@@ -41,7 +43,7 @@ public class MainGameParentPanel extends JPanel{
 											.setReferenceLabelValues(MainScreenReferenceValues.getPlayerInfoPanelLabelReferenceValues())
 											.setBackgroundColor(GlobalGameVars.brigthLightBlueColor)
 											.build();
-			playerPanelInfo.setUICustomization(new SimpleLabel());
+			playerPanelInfo.setUICustomization(new SimpleLabel(), new SetUIelementsFrPresentationalPanels());
 			playerPanelInfo.createPanel();
 			add(playerPanelInfo.getPanel());
 			playerPanelInfo.getPanel().setLayout(null);
@@ -60,6 +62,7 @@ public class MainGameParentPanel extends JPanel{
 												.setBackgroundColor(GlobalGameVars.brigthLightBlueColor)
 												.build();
 		currentPlayerInfoPanel.setUICustomization(new SimpleButton(), new SimpleLabel());
+		currentPlayerInfoPanel.setPanelBehavior(new MainGameActionListener());
 		currentPlayerInfoPanel.createPanel();
 		add(currentPlayerInfoPanel.getPanel());
 		currentPlayerInfoPanel.getPanel().setLayout(null);
@@ -77,7 +80,7 @@ public class MainGameParentPanel extends JPanel{
 												.setReferenceLabelValues(MainScreenReferenceValues.getCurrentShiftInfoPanelLabelReferenceValues())
 												.setBackgroundColor(GlobalGameVars.brigthOrangeColor)
 												.build();
-		currentShiftInfoPanel.setUICustomization(new SimpleLabel());
+		currentShiftInfoPanel.setUICustomization(new SimpleLabel(), new SetUIelementsFrPresentationalPanels());
 		currentShiftInfoPanel.createPanel();
 		add(currentShiftInfoPanel.getPanel());
 		currentShiftInfoPanel.getPanel().setLayout(null);

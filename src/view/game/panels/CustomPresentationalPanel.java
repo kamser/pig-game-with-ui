@@ -8,10 +8,12 @@ import javax.swing.JLabel;
 import common.CustomUIelement;
 import view.game.panelBuilder.PresentationalPanelInterface;
 import view.game.strategyInterfaces.CreateLabelInt;
+import view.game.strategyInterfaces.IsetUIelementsOnPanel;
 
 public class CustomPresentationalPanel extends BasePanel implements PresentationalPanelInterface{
 	
 	CreateLabelInt customLabel;
+	IsetUIelementsOnPanel setUIelementsOnPanel;
 
 	public CustomPresentationalPanel(int xCoordenadePosition, int yCoordenadePosition, int panelWidth, int panelHeigth, List<CustomUIelement>referenceLabelValues, Color backgroundColor) {
 		super(xCoordenadePosition, yCoordenadePosition, panelWidth, panelHeigth, referenceLabelValues, backgroundColor);
@@ -25,9 +27,10 @@ public class CustomPresentationalPanel extends BasePanel implements Presentation
 
 	@Override
 	public void setUIelementsOnPanel() {
-		for(CustomUIelement UIelementMetadata : referenceLabelValues) {
+		/*for(CustomUIelement UIelementMetadata : referenceLabelValues) {
 			setComponent(createLabel(UIelementMetadata));
-		}
+		}*/
+		setUIelementsOnPanel.setUIelementsOnPanel(this, referenceLabelValues, customLabel);
 	}
 
 	@Override
@@ -36,8 +39,9 @@ public class CustomPresentationalPanel extends BasePanel implements Presentation
 		setUIelementsOnPanel();
 	}
 	
-	public void setUICustomization(CreateLabelInt selectedWayToCreateLabel) {
+	public void setUICustomization(CreateLabelInt selectedWayToCreateLabel, IsetUIelementsOnPanel selectedWayToSetUIelementsOnPanel) {
 		customLabel = selectedWayToCreateLabel;
+		setUIelementsOnPanel = selectedWayToSetUIelementsOnPanel;
 	}
 
 }

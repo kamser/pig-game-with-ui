@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import common.GlobalGameVars;
+import view.game.panels.ConfigurationGameParentPanel;
 import view.game.panels.MainGameParentPanel;
 
 
@@ -49,8 +50,9 @@ public class Game extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setInitialScreenCoordenades();
 		setBounds(screenWidth/3, screenHeight/3, GlobalGameVars.mainFrameWidth, GlobalGameVars.mainFrameHeight);
-		contentPane = new MainGameParentPanel();
-		
+		contentPane = new ConfigurationGameParentPanel(this);
+		//((ConfigurationGameParentPanel) contentPane).setMainProgramFrame(this);
+		//contentPane = new MainGameParentPanel();
 		
 
 		setContentPane(contentPane);

@@ -1,12 +1,13 @@
 package view.game.panels;
 
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import common.CustomUIelement;
@@ -22,15 +23,22 @@ public class CustomFormPanel extends BasePanel implements FormPanelInterface{
 	CreateLabelInt customLabel;
 	CreateCheckboxInt customCheckbox;
 	CreateTextfieldInt customTextfield;
+	ActionListener behaviorOnClick;
 	
+	private List<JCheckBox> panelCheckboxReferences;
+	private List<JTextField> panelTextfieldReferences;
+	
+
 	public CustomFormPanel(int xCoordenadePosition, int yCoordenadePosition, int panelWidth, int panelHeigth,
 			List<CustomUIelement> referenceLabelValues, Color backgroundColor) {
 		super(xCoordenadePosition, yCoordenadePosition, panelWidth, panelHeigth, referenceLabelValues, backgroundColor);
+		panelCheckboxReferences =  new ArrayList<JCheckBox>();
+		panelTextfieldReferences =  new ArrayList<JTextField>();
 	}
 
 	@Override
-	public JButton createButton(CustomUIelement elementData) {
-		return customButton.createButton(elementData);
+	public JButton createButton(CustomUIelement elementData, ActionListener behaviorOnClick) {
+		return customButton.createButton(elementData, behaviorOnClick);
 	}
 
 	@Override
@@ -47,22 +55,39 @@ public class CustomFormPanel extends BasePanel implements FormPanelInterface{
 	public JTextField createTextfield(CustomUIelement elementData) {
 		return customTextfield.createTextfield(elementData);
 	}
+	
+	/*
+	 * Para el caso del setUIelementsOnPanel, se puede pensar que pinta para hacer
+	 * uso del patr[on de dise;o startegy, pero no es as[i. La finalidad del algoritmo 
+	 * es la misma tanto para el panel de presentacion, de acci[on y de formulario,
+	 * sin embargo, los tres requieren diferentes recursos para completarse, no requieren
+	 * los mismos recursos, ya que en unos hay botones y lables, en otros solo lables y en
+	 * otros a[un m[as elementos, entonces el patr[on strategy no es implementable para este caso
+	 * por eso se dejo la logica del algoritmo asociada a la clase y no se extrajo. Adem[as,
+	 * Esta est una clase que no va repetir el uso del algoritmo en otros lugares, por lo tanto,
+	 * no vale la pena alzar la complejidad del algoritmo.
+	 * Para ejemplo, se dej[o el caso del panel de presentaci[on
+	 * */
 
 	@Override
 	public void setUIelementsOnPanel() {
 		for(CustomUIelement uiElementMetadata : getReferenceLabelValues()) {
 			switch(uiElementMetadata.getUiElemID()){
 				case BUTTON:
-					setComponent(createButton(uiElementMetadata));
+					setComponent(createButton(uiElementMetadata, behaviorOnClick));
 					break;
 				case LABEL:
 					setComponent(createLabel(uiElementMetadata));
 					break;
 				case CHECKBOX:
-					setComponent(createCheckbox(uiElementMetadata));
+					JCheckBox newCheckbox = createCheckbox(uiElementMetadata);
+					panelCheckboxReferences.add(newCheckbox);
+					setComponent(newCheckbox);
 					break;
 				case TEXTFIELD:
-					setComponent(createTextfield(uiElementMetadata));
+					JTextField textfield = createTextfield(uiElementMetadata);
+					panelTextfieldReferences.add(textfield);
+					setComponent(textfield);
 					break;
 			}
 		}
@@ -75,6 +100,13 @@ public class CustomFormPanel extends BasePanel implements FormPanelInterface{
 		
 	}
 	
+	@Override
+	public void setPanelBehavior(ActionListener behaviorOnClick) {
+		this.behaviorOnClick = behaviorOnClick;
+		
+	}
+
+	
 	public void setUICustomization(	CreateButtonInt selectedWayToCreateButton, 
 									CreateLabelInt selectedWayToCreateLabel,
 									CreateCheckboxInt selectedWayToCreateCheckbox,
@@ -84,7 +116,14 @@ public class CustomFormPanel extends BasePanel implements FormPanelInterface{
 		customCheckbox = selectedWayToCreateCheckbox;
 		customTextfield = selectedWayToCreateTextfield;
 	}
-
+	
+	public List<JCheckBox> getCheckboxComponents(){
+		return panelCheckboxReferences;
+	}
+	
+	public List<JTextField> getTextfieldComponents(){
+		return panelTextfieldReferences;
+	}
 	
 
 }

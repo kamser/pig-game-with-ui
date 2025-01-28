@@ -10,7 +10,7 @@ public class ConfigurationScreenReferenceValues {
 		
 		List<CustomUIelement> upperPanelReferenceLabels = new ArrayList<CustomUIelement>();
 		
-		upperPanelReferenceLabels.add(new CustomUIelement("Game Configuration", new Rectangle(30, 28, 300, 50), UIelementIdentifier.LABEL));
+		upperPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.TITLE_PANEL_LBL, new Rectangle(GlobalGameVars.secundaryLabelleftPadding, GlobalGameVars.secundaryLabelTopPadding, 300, GlobalGameVars.labelHeight), UIelementIdentifier.LABEL));
 		
 		return upperPanelReferenceLabels;
 		
@@ -20,21 +20,73 @@ public class ConfigurationScreenReferenceValues {
 		
 		List<CustomUIelement> gameConfigurationFormPanelReferenceLabels = new ArrayList<CustomUIelement>();
 		
-		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement("Quick Match", new Rectangle(30, 89, 150, 50), UIelementIdentifier.LABEL));
+		int nextYcoordenadeFrLabel = GlobalGameVars.defaulInitialMarginTopFrFistUIElement;
+		int nextYcoordenadeFrUIelements = nextYcoordenadeFrLabel + GlobalGameVars.pixelDistanceAlignerBetweenCoorelatedUIelements;
 		
-		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement("", new Rectangle(230, 94, 60, 30), UIelementIdentifier.CHECKBOX));
+		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.QUICK_MATCH_LBL, 
+														new Rectangle(GlobalGameVars.secundaryLabelleftPadding, 
+																	nextYcoordenadeFrLabel, 
+																	GlobalGameVars.labelWidth, 
+																	GlobalGameVars.labelHeight),
+														UIelementIdentifier.LABEL));
 		
-		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement("Amount of Players", new Rectangle(30, 169, 190, 50), UIelementIdentifier.BUTTON));
+		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.EMPTY_TXT_CONTENT,
+														new Rectangle(GlobalGameVars.leftPaddingFrSecondUIinlineItem, 
+																nextYcoordenadeFrUIelements, 
+																GlobalGameVars.shortTextfieldWidth, 
+																GlobalGameVars.TextfieldHeight),
+														UIelementIdentifier.CHECKBOX));
 		
-		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement("", new Rectangle(230, 182, 101, 20), UIelementIdentifier.TEXTFIELD));
+		nextYcoordenadeFrLabel += GlobalGameVars.defaultDistanceBetweenUIelements;
+		nextYcoordenadeFrUIelements = nextYcoordenadeFrLabel + GlobalGameVars.pixelDistanceAlignerBetweenCoorelatedUIelements;
 		
-		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement("Amount of Dices", new Rectangle(30, 216, 190, 50), UIelementIdentifier.LABEL));
+		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.PLAYERS_AMOUNT_LBL,
+														new Rectangle(GlobalGameVars.secundaryLabelleftPadding, 
+																nextYcoordenadeFrLabel, 
+																GlobalGameVars.labelWidth, 
+																GlobalGameVars.labelHeight),
+														UIelementIdentifier.LABEL));
 		
-		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement("", new Rectangle(234, 229, 96, 20), UIelementIdentifier.TEXTFIELD));
+		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.EMPTY_TXT_CONTENT, 
+														new Rectangle(GlobalGameVars.leftPaddingFrSecondUIinlineItem,
+																nextYcoordenadeFrUIelements,
+																GlobalGameVars.shortTextfieldWidth,
+																GlobalGameVars.TextfieldHeight),
+														UIelementIdentifier.TEXTFIELD));
 		
-		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement("Goal Score", new Rectangle(30, 261, 150, 50), UIelementIdentifier.LABEL));
+		nextYcoordenadeFrLabel += GlobalGameVars.defaultDistanceBetweenUIelements;
+		nextYcoordenadeFrUIelements = nextYcoordenadeFrLabel + GlobalGameVars.pixelDistanceAlignerBetweenCoorelatedUIelements;
 		
-		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement("", new Rectangle(234, 274, 96, 20), UIelementIdentifier.TEXTFIELD));
+		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.DICES_AMOUNT_LBL,
+														new Rectangle(GlobalGameVars.secundaryLabelleftPadding,
+																nextYcoordenadeFrLabel,
+																GlobalGameVars.labelWidth,
+																GlobalGameVars.labelHeight),
+														UIelementIdentifier.LABEL));
+		
+		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.EMPTY_TXT_CONTENT,
+														new Rectangle(GlobalGameVars.leftPaddingFrSecondUIinlineItem,
+																nextYcoordenadeFrUIelements, 
+																GlobalGameVars.shortTextfieldWidth, 
+																GlobalGameVars.TextfieldHeight), 
+														UIelementIdentifier.TEXTFIELD));
+		
+		nextYcoordenadeFrLabel += GlobalGameVars.defaultDistanceBetweenUIelements;
+		nextYcoordenadeFrUIelements = nextYcoordenadeFrLabel + GlobalGameVars.pixelDistanceAlignerBetweenCoorelatedUIelements;
+		
+		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.MATCH_GOAL_SCORE_LBL,
+														new Rectangle(GlobalGameVars.secundaryLabelleftPadding,
+																nextYcoordenadeFrLabel,
+																GlobalGameVars.labelWidth,
+																GlobalGameVars.labelHeight),
+														UIelementIdentifier.LABEL));
+		
+		gameConfigurationFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.EMPTY_TXT_CONTENT,
+														new Rectangle(GlobalGameVars.leftPaddingFrSecondUIinlineItem,
+																nextYcoordenadeFrUIelements,
+																GlobalGameVars.shortTextfieldWidth,
+																GlobalGameVars.TextfieldHeight),
+														UIelementIdentifier.TEXTFIELD));
 		
 		
 		return gameConfigurationFormPanelReferenceLabels;
@@ -45,19 +97,65 @@ public class ConfigurationScreenReferenceValues {
 		
 		List<CustomUIelement> gamePlayerFormPanelReferenceLabels = new ArrayList<CustomUIelement>();
 		
-		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement("Player Creator", new Rectangle(448, 89, 190, 50), UIelementIdentifier.LABEL));
+		int nextYcoordenadeFrLabel = GlobalGameVars.defaulInitialMarginTopFrFistUIElement;
+		int nextYcoordenadeFrUIelements = nextYcoordenadeFrLabel + GlobalGameVars.pixelDistanceAlignerBetweenCoorelatedUIelements;
 		
-		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement("Player one name:", new Rectangle(378, 169, 190, 50), UIelementIdentifier.LABEL));
+		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.PLAYER_CREATOR_TITLE_LBL,
+												new Rectangle(GlobalGameVars.secundaryLabelleftPadding,
+														nextYcoordenadeFrLabel,
+														GlobalGameVars.labelWidth,
+														GlobalGameVars.labelHeight),
+												UIelementIdentifier.LABEL));
 		
-		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement("", new Rectangle(558, 182, 149, 20), UIelementIdentifier.TEXTFIELD));
+		nextYcoordenadeFrLabel += GlobalGameVars.defaultDistanceBetweenUIelements;
+		nextYcoordenadeFrUIelements = nextYcoordenadeFrLabel + GlobalGameVars.defaulInitialMarginTopFrFistUIElement;
 		
-		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement("Player two name:", new Rectangle(378, 216, 190, 50), UIelementIdentifier.LABEL));
+		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.PLAYER_ONE_NAME_LBL,
+												new Rectangle(GlobalGameVars.secundaryLabelleftPadding,
+														nextYcoordenadeFrLabel, GlobalGameVars.labelWidth,
+														GlobalGameVars.labelHeight),
+												UIelementIdentifier.LABEL));
 		
-		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement("", new Rectangle(558, 229, 149, 20), UIelementIdentifier.TEXTFIELD));
+		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.EMPTY_TXT_CONTENT,
+												new Rectangle(GlobalGameVars.leftPaddingFrSecondUIinlineItem,
+														nextYcoordenadeFrUIelements,
+														GlobalGameVars.largeTextfieldWidth,
+														GlobalGameVars.TextfieldHeight),
+												UIelementIdentifier.TEXTFIELD));
 		
-		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement("Player three name:", new Rectangle(378, 261, 190, 50), UIelementIdentifier.LABEL));
+		nextYcoordenadeFrLabel += GlobalGameVars.defaultDistanceBetweenUIelements;
+		nextYcoordenadeFrUIelements = nextYcoordenadeFrLabel + GlobalGameVars.defaulInitialMarginTopFrFistUIElement;
 		
-		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement("", new Rectangle(558, 274, 149, 20), UIelementIdentifier.TEXTFIELD));
+		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.PLAYER_TWO_NAME_LBL,
+												new Rectangle(GlobalGameVars.secundaryLabelleftPadding,
+														nextYcoordenadeFrLabel,
+														GlobalGameVars.labelWidth,
+														GlobalGameVars.labelHeight),
+												UIelementIdentifier.LABEL));
+		
+		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.EMPTY_TXT_CONTENT,
+												new Rectangle(GlobalGameVars.leftPaddingFrSecondUIinlineItem,
+														nextYcoordenadeFrUIelements,
+														GlobalGameVars.largeTextfieldWidth,
+														GlobalGameVars.TextfieldHeight),
+												UIelementIdentifier.TEXTFIELD));
+		
+		nextYcoordenadeFrLabel += GlobalGameVars.defaultDistanceBetweenUIelements;
+		nextYcoordenadeFrUIelements = nextYcoordenadeFrLabel + GlobalGameVars.defaulInitialMarginTopFrFistUIElement;
+		
+		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.PLAYER_THREE_NAME_LBL,
+											new Rectangle(GlobalGameVars.secundaryLabelleftPadding,
+													nextYcoordenadeFrLabel,
+													GlobalGameVars.labelWidth,
+													GlobalGameVars.labelHeight),
+											UIelementIdentifier.LABEL));
+		
+		gamePlayerFormPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.EMPTY_TXT_CONTENT,
+												new Rectangle(GlobalGameVars.leftPaddingFrSecondUIinlineItem,
+														nextYcoordenadeFrUIelements,
+														GlobalGameVars.largeTextfieldWidth,
+														GlobalGameVars.TextfieldHeight),
+												UIelementIdentifier.TEXTFIELD));
 		
 		return gamePlayerFormPanelReferenceLabels;
 		
@@ -67,9 +165,19 @@ public class ConfigurationScreenReferenceValues {
 		
 		List<CustomUIelement> bottomPanelReferenceLabels = new ArrayList<CustomUIelement>();
 		
-		bottomPanelReferenceLabels.add(new CustomUIelement("Start", new Rectangle(618, 434, 89, 23), UIelementIdentifier.BUTTON));
+		bottomPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.START_GAME_LBL,
+										new Rectangle(GlobalGameVars.config_leftPaddingFrStartButton,
+												GlobalGameVars.defaulInitialMarginTopFrFistUIElement,
+												GlobalGameVars.buttonWidth,
+												GlobalGameVars.buttonHeight),
+										UIelementIdentifier.BUTTON));
 		
-		bottomPanelReferenceLabels.add(new CustomUIelement("Exit", new Rectangle(506, 434, 89, 23), UIelementIdentifier.BUTTON));
+		bottomPanelReferenceLabels.add(new CustomUIelement(ConfigurationPanelVars.EXIT_GAME_LBL,
+										new Rectangle(GlobalGameVars.config_leftPaddingFrExitButton,
+												GlobalGameVars.defaulInitialMarginTopFrFistUIElement,
+												GlobalGameVars.buttonWidth,
+												GlobalGameVars.buttonHeight), 
+										UIelementIdentifier.BUTTON));
 
 		
 		return bottomPanelReferenceLabels;
